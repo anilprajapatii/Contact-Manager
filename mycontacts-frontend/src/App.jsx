@@ -1,9 +1,11 @@
+import Login from "./auth/Login";
+import Signup from "./auth/Signup";
+
 function App() {
   return (
     <>
-     <div className=" bg-red-200">
-      <h1 className="font-bold">hellow</h1>
-     </div>
+    <Signup/>
+     {/* <Login/> */}
     </>
   );
 }
