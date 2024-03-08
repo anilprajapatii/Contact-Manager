@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Navbar from '../navbar/Navbar';
 
 export default function Mycontacts() {
   const [contacts, setContacts] = useState([
@@ -40,15 +41,17 @@ export default function Mycontacts() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-8">
+    <>
+    <Navbar/>
+    <div className="mx-auto max-w-5xl px-2 sm:px-6 lg:px-15 mt-8">
       {contacts.map((contact) => (
-        <div key={contact.id} className="bg-white shadow-md rounded p-4 mb-4 flex items-center">
+        <div key={contact.id} className="bg-white ml-3 rounded p-4 mb-4 flex items-center border ">
           <img
             src={`https://placekitten.com/50/50?image=${contact.id}`}
             alt={contact.name}
             className="w-10 h-10 rounded-full mr-4"
           />
-          <div className='flex items-center gap-10'>
+          <div className='flex flex-wrap items-center gap-10'>
             <p className="text-lg font-semibold">{contact.name}</p>
             <p className="text-gray-600">{contact.phone}</p>
             <p className="text-gray-600">{contact.email}</p>
@@ -70,6 +73,8 @@ export default function Mycontacts() {
         </div>
       ))}
     </div>
+    </>
   );
+  
 };
 
