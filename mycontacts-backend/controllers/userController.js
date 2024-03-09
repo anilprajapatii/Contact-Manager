@@ -39,6 +39,7 @@ const registerUser = asyncHandler(async (req, resp) => {
 //@route POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, resp) => {
+  console.log("fgj");
   const { email, password } = req.body;
   if (!email || !password) {
     throw new Error("All fileds are mandatory !");
@@ -57,8 +58,8 @@ const loginUser = asyncHandler(async (req, resp) => {
       process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "15m" }
     );
-    resp.status(200).json({ accessToken });
-  } else{
+    resp.cookie("token",accessToken,{ maxAge: 900000, httpOnly: true }).status(200).json({ accessToken });
+  } else {
     resp.status(401);
     throw new Error("Email or Password is not valid");
   }
